@@ -171,13 +171,13 @@ const fibonacci = function(num) {
 
 // 7. Factorial
 // Write a recursive function that finds the factorial of a given number
-input = 5
-output = 120
+// input = 5
+// output = 120
 
-recursive input = 5 * factorial(4)
-recursive input = 4 * factorial(3)
-recursive input = 2 * factorial(1)
-recursive output = 120
+// recursive input = 5 * factorial(4)
+// recursive input = 4 * factorial(3)
+// recursive input = 2 * factorial(1)
+// recursive output = 120
 
 const factorial = function(num) {
     if (num === 1) {
@@ -187,4 +187,96 @@ const factorial = function(num) {
     return num * factorial(num - 1)
 }
 
-console.log(factorial(5))
+// console.log(factorial(5))
+
+// 8. Find a way out of the maze
+
+const mazeSolution = function(arr) {
+    let path = ''
+    let rows = arr.length
+    let columns = arr[0].length
+
+    const locationRowStart = rows - rows
+    const locationColumnStart = columns - columns
+
+
+    let location = arr[locationRowStart][locationColumnStart]
+    console.log(location)
+    console.log(path)
+
+    //base case
+    if (location === 'e') {
+        return path
+    }
+
+    //recursive case
+    if (location == ' ') {
+        path += 'R'
+    }
+    console.log(path) 
+}
+
+let mySmallMaze = [
+    [' ', ' ', ' '],
+    [' ', '*', ' '],
+    [' ', ' ', 'e']
+];
+
+let maze = [
+    [' ', ' ', ' ', '*', ' ', ' ', ' '],
+    ['*', '*', ' ', '*', ' ', '*', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', '*', '*', '*', '*', '*', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', 'e']
+];
+
+// console.log(mazeSolution(maze))
+
+
+// 9. Find all ways out of the maze
+
+
+
+// 10. Anagrams
+
+
+const anagrams = function(word) {
+    let results = []; // store the results in an array
+    // base case
+    if (word.length <= 1) {
+        return [word];
+    }
+    const str = word.split(''); // splits word into an array of single letters
+
+    str.forEach((letter, idx) => {
+        let charLeft = [...str.slice(0, idx), ...str.slice(idx + 1)].join('');
+        const permutations = anagrams(charLeft);
+        permutations.forEach(permutation => {
+            results.push(letter + permutation);
+        });
+    });
+    return results;
+}
+
+// console.log(anagrams('east')); // returns 24 strings
+
+// 11. Organization Chart
+
+// 12. Binary
+
+const binary = function(num) {
+    if (num === 0) {
+        return 0
+    }
+
+    const dividedNum =  Math.floor(num/2)
+    const remainder = num % 2
+
+    if (dividedNum === 0) {
+        return `${remainder}`
+    }
+
+    return binary(dividedNum) + remainder
+}
+
+// console.log(binary(25))
