@@ -167,4 +167,24 @@ const fibonacci = function(num) {
     return fibonacci(num - 2) + fibonacci(num - 1)
 }
 
-console.log(fibonacci(7))
+// console.log(fibonacci(7))
+
+// 7. Factorial
+// Write a recursive function that finds the factorial of a given number
+input = 5
+output = 120
+
+recursive input = 5 * factorial(4)
+recursive input = 4 * factorial(3)
+recursive input = 2 * factorial(1)
+recursive output = 120
+
+const factorial = function(num) {
+    if (num === 1) {
+        return num
+    }
+
+    return num * factorial(num - 1)
+}
+
+console.log(factorial(5))
