@@ -117,4 +117,54 @@ const triangleNum = function(n) {
     return n + triangleNum(n -1)
 }
 
-console.log(triangleNum(4))
+// console.log(triangleNum(4))
+
+// 5. String Splitter
+// write a recursive funtion that splits a string based on a seperator
+// Dont use js array's split function
+
+// input 02/20/2020
+// output ["02", "20", "2020"]
+
+// recursive input = 20/2020, "/", ["02"]
+// recursive input = 2020, "/", ["02", "20"]
+// recursive output = ["02", "20", "2020"]
+
+
+
+const stringSplitter = function(string, seperator, arr) {
+    
+    if (!(string.includes(seperator))) {
+        arr.push(string)
+        return arr
+    }
+
+    const split = string.indexOf(seperator)
+
+    const first = string.slice(0, split)
+    const next = string.slice(split + 1)
+
+    arr.push(first)
+
+    stringSplitter(next, seperator, arr)
+    return arr
+}
+
+// console.log(stringSplitter("02/20/2020", "/", []))
+
+// 6. Fibonacci
+// Write a recursive function that prints the Fibonacci sequence of a given number.
+// The Fibonacci sequence is a series of numbers 
+// in which each number is the sum of the 2 preceding numbers. 
+
+// input = 7
+// output = 13
+
+const fibonacci = function(num) {
+    if (num === 0 || num === 1) {
+        return num
+    }
+    return fibonacci(num - 2) + fibonacci(num - 1)
+}
+
+console.log(fibonacci(7))
